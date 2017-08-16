@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tool>
+	<Manufacturer>ILS</Manufacturer>
+	<Type>TestServer</Type>
+	<Name>WebAppTool</Name>
+	<Desc>Hopefully Deploys my WebApp</Desc>
+	<Inherited>false</Inherited>
+	<Services>
+		<HTTPProxy>
+			<HTTPServiceName>TestService</HTTPServiceName>
+			<HTTPHostName>172.27.9.170</HTTPHostName>
+			<HTTPServerDNSName>localhost</HTTPServerDNSName>
+			<HTTPServiceAlias>TestingWebApp</HTTPServiceAlias>
+			<HTTPPort>8080</HTTPPort>
+			<HTTPUser>ilstech</HTTPUser>
+			<HTTPPassword>ILStech@5300</HTTPPassword>
+			<HTTPUseeCentreClientCredentials>false
+			</HTTPUseeCentreClientCredentials>
+			<HTTPUploadVirusCheck>false</HTTPUploadVirusCheck>
+			<HTTPDownloadVirusCheck>false</HTTPDownloadVirusCheck>
+			<HTTPWebRoot>TestingWebApp/loginpage.xhtml
+			</HTTPWebRoot>
+			<HTTPBookmarks>
+				<URLBookmark name="login"><![CDATA[loginpage.xhtml]]>
+				</URLBookmark>
+			</HTTPBookmarks>
+			<ResourceGroup>
+				<Name>URL Filter Set 1</Name>
+				<ResourceType>URLFilter</ResourceType>
+				<Resource>
+					<UniqueName>/TestingWebApp/*</UniqueName>
+				</Resource>
+			</ResourceGroup>
+		</HTTPProxy>
+	</Services>
+</Tool>

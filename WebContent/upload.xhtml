@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+<h1>File Upload/Download</h1>
+<h:body>
+
+	<div class="center">
+		<h2>Upload a file with servlets - can download after</h2>
+		<form action="UploadDownloadFileServlet" method="post"
+			enctype="multipart/form-data">
+			Select File to Upload:<br /> <input type="file" name="fileName" />
+			<br /> <input type="submit" value="Upload" />
+		</form>
+
+		<br />
+	</div>
+	<div class="center">
+		<H2>Upload a file with primefaces</H2>
+		<h:form enctype="multipart/form-data" class="form">
+			<p:growl id="messages" showDetail="true" />
+
+			<p:fileUpload value="#{fileUploadView.file}" mode="simple"
+				skinSimple="true" />
+
+			<p:commandButton value="Submit" ajax="false"
+				actionListener="#{fileUploadView.upload}" />
+		</h:form>
+	</div>
+	<div class="center">
+		<h2>Download the .gif pictured below</h2>
+		<img
+			src="resources/images/ajaxloadingbar.gif" /><br />
+		<h:form>
+			<p:commandButton value="Download" ajax="false"
+				onclick="PrimeFaces.monitorDownload(start, stop);"
+				icon="ui-icon-arrowthick-1-s">
+				<p:fileDownload value="#{fileDownloadView.downloadFile}" />
+			</p:commandButton>
+		</h:form>
+	</div>
+	<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+		draggable="false" closable="false" resizable="false">
+		<p:graphicImage name="images/ajaxloadingbar.gif" />
+	</p:dialog>
+
+
+	<script type="text/javascript">
+		function start() {
+			PF('statusDialog').show();
+		}
+
+		function stop() {
+			PF('statusDialog').hide();
+		}
+	</script>
+</h:body>
+</html>
